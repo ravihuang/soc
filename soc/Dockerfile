@@ -153,7 +153,7 @@ RUN \
   yum install -y --enablerepo=remi-php56 php-fpm \
        php-gd php-bcmath php-ctype php-xml php-xmlreader php-xmlwriter \
        php-session php-net-socket php-mbstring php-gettext php-cli \
-       php-mysqlnd php-opcache php-pdo php-snmp php-ldap && \
+       php-mysqlnd php-opcache php-pdo php-snmp php-ldap php-mcrypt && \
   yum clean all && rm -rf /tmp/*
 ADD container-files-base /
 
@@ -210,9 +210,7 @@ RUN  cp /usr/local/etc/soc_agentd.conf /tmp && \
   cp -f /tmp/soc_agentd.conf /usr/local/etc/ && \
   cd /usr/local/src/soc/frontends/php && \
   locale/make_mo.sh && \
-  `yum autoremove -y gettext python-pip tar gcc automake mariadb-devel \`
-  `                  java-1.8.0-openjdk-devel libxml2-devel libcurl-devel \`
-  `                  OpenIPMI-devel iksemel-devel rubygems kernel-headers && \`
+  `yum autoremove -y gettext python-pip tar gcc automake mariadb-devel java-1.8.0-openjdk-devel libxml2-devel libcurl-devel OpenIPMI-devel iksemel-devel rubygems kernel-headers && ` \
   yum install -y OpenIPMI-libs && \
   chmod +x /config/bootstrap.sh && \
   chmod +x /config/ds.sh && \
