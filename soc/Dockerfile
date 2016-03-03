@@ -192,7 +192,7 @@ RUN \
 #GREATY_VERSION
 ENV SOC_VERSION=160129.1
 RUN  cp /usr/local/etc/soc_agentd.conf /tmp && \
-  svn co http://172.16.5.114/svn/zabbix -r 1 /usr/local/src/soc && \
+  svn co http://172.16.5.114/svn/zabbix /usr/local/src/soc && \
   cd /usr/local/src/soc && \
   ls && \
   DATE=`date +%Y-%m-%d` && \
@@ -212,10 +212,10 @@ RUN  cp /usr/local/etc/soc_agentd.conf /tmp && \
   cp -f /tmp/soc_agentd.conf /usr/local/etc/ && \
   cd /usr/local/src/soc/frontends/php && \
   locale/make_mo.sh && \
-  `# yum autoremove -y gettext python-pip tar gcc automake mariadb-devel java-1.8.0-openjdk-devel libxml2-devel libcurl-devel OpenIPMI-devel iksemel-devel rubygems kernel-headers && ` \
-  yum install -y OpenIPMI-libs && \
+  `# yum autoremove -y gettext python-pip tar gcc automake mariadb-devel java-1.8.0-openjdk-devel libxml2-devel libcurl-devel OpenIPMI-devel iksemel-devel rubygems kernel-headers && yum install -y OpenIPMI-libs && ` \ 
   chmod +x /config/bootstrap.sh && \
   chmod +x /config/ds.sh && \
+  ls -l  /usr/local/src/soc/misc/snmptrap/  && \
   chmod +x /usr/local/src/soc/misc/snmptrap/soc_trap_receiver.pl && \
   chmod +x /usr/share/snmptt/snmptthandler-embedded && \
   sed -i -e "s/Defaults    requiretty.*/ #Defaults    requiretty/g" /etc/sudoers && \
