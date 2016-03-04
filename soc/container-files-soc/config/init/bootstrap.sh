@@ -150,15 +150,15 @@ update_config() {
     sed -i "s#${reg}#${val}#g" /usr/local/src/soc/frontends/php/conf/soc.conf.php
   done
 
-  # ^PHP_: /etc/php.d/zz-soc.ini
+  # ^PHP_: /etc/php.d/soc.ini
   for i in $( set -o posix ; set | grep ^PHP_ | sort -rn ); do
     reg=$(echo ${i} | awk -F'=' '{print $1}')
     val=$(echo ${i} | awk -F'=' '{print $2}')
-    sed -i "s#${reg}\$#${val}#g" /etc/php.d/zz-soc.ini
+    sed -i "s#${reg}\$#${val}#g" /etc/php.d/soc.ini
   done
 
   if [ -f /etc/custom-config/php-soc.ini ]; then
-    cp -f /etc/custom-config/php-soc.ini /etc/php.d/zz-soc.ini
+    cp -f /etc/custom-config/php-soc.ini /etc/php.d/soc.ini
   fi
   if [ -f /etc/custom-config/soc_server.conf ]; then
     cp -f /etc/custom-config/soc_server.conf /usr/local/etc/soc_server.conf
