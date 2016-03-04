@@ -22,7 +22,7 @@ ENV \
   ZS_LogFile=/tmp/soc_server.log \
   ZS_LogFileSize=10 \
   ZS_DebugLevel=3 \
-  ZS_PidFile=/var/run/soc_server.pid \
+  ZS_PidFile=/tmp/soc_server.pid \
   ZS_DBHost=soc.db \
   ZS_DBName=soc \
   ZS_DBSchema="" \
